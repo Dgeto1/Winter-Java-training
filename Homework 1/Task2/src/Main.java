@@ -2,7 +2,9 @@ import java.lang.reflect.Array;
 
 public class Main {
     public static void main(String[] args) {
-
+            String wordOne = "abc";
+            String wordTwo = "dafc";
+        System.out.println(SameStrings(wordOne, wordTwo));
     }
 
     public static String SameStrings(String wordOne, String wordTwo){
