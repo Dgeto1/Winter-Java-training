@@ -48,7 +48,29 @@ public class Main {
     }
 
     public static void SortingArray(int[] arr){
+        int countOne = 0, countTwo = 0, countThree = 0, countFour = 0, countFive = 0;
+
         for(int i=0; i<arr.length; i++)
+        {
+            switch (arr[i]){
+                case 1 -> countOne++;
+                case 2 -> countTwo++;
+                case 3 -> countThree++;
+                case 4 -> countFour++;
+                case 5 -> countFive++;
+            }
+        }
+        int currentIndex = 0;
+        while(currentIndex<arr.length)
+        {
+            for(int i=0; i<countOne; i++)
+            {
+                arr[i] = 1;
+            }
+            currentIndex++;
+        }
+
+        /*for(int i=0; i<arr.length; i++)
         {
             for (int j=i+1; j<arr.length; j++)
             {
@@ -59,6 +81,6 @@ public class Main {
                     arr[j] = a;
                 }
             }
-        }
+        }*/
     }
 }
