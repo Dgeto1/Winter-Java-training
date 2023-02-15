@@ -21,7 +21,7 @@ public class Main {
         System.out.println();
 
         //Task 3
-        String word = "zab";
+        String word = "Zab";
         int count = 2;
 
         System.out.println(EncryptedString(word, count));

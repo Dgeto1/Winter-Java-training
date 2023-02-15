@@ -27,7 +27,7 @@ public class Main {
         SortingArray(nums);
         for(int i=0; i<nums.length; i++)
         {
-            System.out.println(nums[i]);
+            System.out.print(nums[i] + " ");
         }
     }
 
@@ -48,7 +48,7 @@ public class Main {
     }
 
     public static void SortingArray(int[] arr){
-        int countOne = 0, countTwo = 0, countThree = 0, countFour = 0, countFive = 0;
+        /*int countOne = 0, countTwo = 0, countThree = 0, countFour = 0, countFive = 0;
 
         for(int i=0; i<arr.length; i++)
         {
@@ -60,17 +60,34 @@ public class Main {
                 case 5 -> countFive++;
             }
         }
-        int currentIndex = 0;
-        while(currentIndex<arr.length)
-        {
-            for(int i=0; i<countOne; i++)
-            {
-                arr[i] = 1;
-            }
-            currentIndex++;
-        }
+        int[] arr1 = new int[countOne];
+        int[] arr2 = new int[countTwo];
+        int[] arr3 = new int[countThree];
+        int[] arr4 = new int[countFour];
+        int[] arr5 = new int[countFive];
 
-        /*for(int i=0; i<arr.length; i++)
+        for(int i=0; i<arr1.length; i++)
+        {
+            arr1[i] = 1;
+        }
+        for(int i=0; i<arr2.length; i++)
+        {
+            arr2[i] = 2;
+        }
+        for(int i=0; i<arr3.length; i++)
+        {
+            arr3[i] = 3;
+        }
+        for(int i=0; i<arr4.length; i++)
+        {
+            arr4[i] = 4;
+        }
+        for(int i=0; i<arr5.length; i++)
+        {
+            arr5[i] = 5;
+        }*/
+
+        for(int i=0; i<arr.length; i++)
         {
             for (int j=i+1; j<arr.length; j++)
             {
@@ -81,6 +98,6 @@ public class Main {
                     arr[j] = a;
                 }
             }
-        }*/
+        }
     }
 }
