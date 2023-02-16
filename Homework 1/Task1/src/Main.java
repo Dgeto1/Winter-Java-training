@@ -5,14 +5,17 @@ public class Main {
             if(i%3==0 && i%5==0)
             {
                 System.out.println("git hub");
+                continue;
             }
             else if(i%3==0)
             {
                 System.out.println("git");
+                continue;
             }
             else if(i%5==0)
             {
                 System.out.println("hub");
+                continue;
             }
             else{
                 System.out.println(i);
