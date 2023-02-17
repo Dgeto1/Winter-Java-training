@@ -3,9 +3,10 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        int[] nums = {1, 8, 0, 6, 3};
+        //Task 1
+        int[] nums = {9, 8, 7, 6, 3};
         System.out.print("[1,8,0,6,3] =>");
-        int[] biggestNumbers = biggestElementsArray(nums, 3);
+        int[] biggestNumbers = biggestElementsArray(nums, 4);
         for (int i = 0; i < biggestNumbers.length; i++) {
             System.out.print(biggestNumbers[i] + " ");
         }
@@ -19,30 +20,31 @@ public class Main {
     }
 
     public static int[] biggestElementsArray(int[] numbers, int number) {
-        int[] biggestElements = new int[number];
+        int[] biggestNums = new int[number];
 
-        int counter = 0;
-
+        boolean isBigger = false;
         for (int i = 0, k = 0; i < numbers.length; i++) {
+            if (number <= 0) {
+                break;
+            }
             for (int j = 0; j < numbers.length; j++) {
-                if (numbers[i] > numbers[j]) {
-                    counter++;
+                if (numbers[i] >= numbers[j]) {
+                    isBigger = true;
+                } else {
+                    isBigger = false;
+                    break;
                 }
             }
-            if (counter == numbers.length - 1) {
-                biggestElements[k] = numbers[i];
-                numbers[i] = Integer.MIN_VALUE;
+            if (isBigger == true) {
+                biggestNums[k] = numbers[i];
                 k++;
-                if (i < numbers.length - 1) {
-                    i = -1;
-                }
+                numbers[i] = Integer.MIN_VALUE;
+                i = -1;
+                number--;
             }
-            counter = 0;
         }
-
-        return biggestElements;
+        return biggestNums;
     }
-
     public static int[] uniqueNumbersArray(String[] numbers) {
         int countLength = 0;
         for (int i = 0, k = 0; i < numbers.length; i++) {
