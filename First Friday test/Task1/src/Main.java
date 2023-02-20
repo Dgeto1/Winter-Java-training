@@ -4,15 +4,14 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         //Task 1
-        int[] nums = {9, 8, 7, 6, 3};
-        System.out.print("[1,8,0,6,3] =>");
+        int[] nums = {1, 8, 0,6, 3, 3};
         int[] biggestNumbers = biggestElementsArray(nums, 4);
         for (int i = 0; i < biggestNumbers.length; i++) {
             System.out.print(biggestNumbers[i] + " ");
         }
         System.out.println();
         //Task 2
-        String[] numbers = {"1", "3", "8", "1", "16", "3", "4"};
+        String[] numbers = {"1", "3", "8", "1", "16", "3", "4", "4"};
         int[] uniqueNumbers = uniqueNumbersArray(numbers);
         for (int i = 0; i < uniqueNumbers.length; i++) {
             System.out.print(uniqueNumbers[i] + " ");
