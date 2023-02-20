@@ -10,6 +10,19 @@ public class Main {
         //Task2
         System.out.println(includes(numbers, number));
         System.out.println(includes(numbers, number, position));
+
+        //Task3
+        System.out.println(shift(numbers));
+        for(int i=0; i<numbers.length; i++){
+            System.out.print(numbers[i] + " ");
+        }
+        System.out.println();
+        //Task4
+        int num = 8;
+        int[] pom = unshift(numbers, num);
+        for(int i=0; i<pom.length; i++){
+            System.out.print(pom[i] + " ");
+        }
     }
 
     public static int indexOf(int[] numbers, int number) {
@@ -55,18 +68,36 @@ public class Main {
     }
 
     public static int shift(int[] numbers){
-        int firstEl = numbers[0];
-        int lastEl = numbers[numbers.length-1];
-
-        for(int i=1; i<numbers.length; i++)
+        if(numbers.length==0)
         {
-            for(int j=2; j<numbers.length; j++)
-            {
-                int number = numbers[i];
-                numbers[i] = 
-            }
+            return Integer.MIN_VALUE;
+        }
+
+        int firstEl = numbers[0];
+        //int lastEl = numbers[numbers.length-1];
+        numbers[numbers.length-1] = Integer.MIN_VALUE;
+        int[] pom = new int[numbers.length];
+        for(int i=1, k=0; i<numbers.length; i++)
+        {
+            pom[k] = numbers[i];
+            k++;
+        }
+        pom[pom.length-1] = Integer.MIN_VALUE;
+        for(int i=0; i<numbers.length; i++){
+            numbers[i] = pom[i];
         }
 
         return firstEl;
+    }
+
+    public static int[] unshift(int[] numbers, int number){
+        int[] pom = new int[numbers.length+1];
+        pom[0] = number;
+
+        for(int i=0, k=1; i<numbers.length; i++){
+            pom[k] = numbers[i];
+            k++;
+        }
+        return pom;
     }
 }
