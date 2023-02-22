@@ -32,7 +32,7 @@ public class Main {
         //Task 4
         System.out.println("Task 4");
         int[] firstNumbers = {1, 1, 2, 3};
-        int[] secondNumbers = {1, 2, 2, 2, 3};
+        int[] secondNumbers = {};
         System.out.println(sameElements(firstNumbers, secondNumbers));
     }
 
@@ -97,6 +97,9 @@ public class Main {
     //Task 4
     public static boolean sameElements(int[] firstNumbers, int[] secondNumbers) {
         boolean areSame = true;
+        if(secondNumbers.length == 0){
+            return false;
+        }
         Set<Integer> numbers = new HashSet<>();
         for (int i = 0; i < firstNumbers.length; i++) {
             numbers.add(firstNumbers[i]);
