@@ -16,6 +16,8 @@ public class Main {
         for (int i = 0; i < results.length; i++) {
             System.out.println(cars[i].getBrand());
         }
+
+        ArrayList<Car> list = new ArrayList<>();
     }
 
     public static Car[] filterCars(Car[] cars, char letter) {
@@ -29,5 +31,15 @@ public class Main {
         Car[] result = new Car[filterCarsList.size()];
 
         return filterCarsList.toArray(result);
+    }
+
+    public static ArrayList<Car> sortCars(ArrayList<Car> cars, boolean sortDesc) {
+        if(sortDesc){
+            cars.sort((c1,c2) -> c2.getBrand().compareTo(c1.getBrand()));
+        } else{
+            cars.sort((c1,c2) -> c1.getBrand().compareTo(c2.getBrand()));
+        }
+        //cars.sort((c1,c2) -> sortDesc?  c2.getBrand().compareTo(c1.getBrand()) : c1.getBrand().compareTo(c2.getBrand()));
+        return cars;
     }
 }

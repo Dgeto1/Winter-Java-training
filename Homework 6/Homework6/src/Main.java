@@ -12,8 +12,16 @@ public class Main {
         System.out.println();
 
         //Task 2
-        String st = "a##bc";
+        String st = "abc#";
+        String st1 = "a##bc";
+        String st2 = "a#bc";
         System.out.println(originalString(st));
+        System.out.println(originalString(st1));
+        System.out.println(originalString(st2));
+
+        //Task 3
+        System.out.println(uniqueSymbols("abca", "deaf"));
+        System.out.println(uniqueSymbols("abc", "dafcc"));
     }
 
     //Task 1
@@ -26,23 +34,41 @@ public class Main {
     }
 
     //Task 2
-    public static String originalString(String st) {
+    public static String originalString(String st)  {
         char[] chars = new char[st.length()];
-        for(int i=0; i<chars.length; i++){
+        for (int i = 0; i < chars.length; i++) {
             chars[i] = st.charAt(i);
         }
-        for(int i = 0; i<chars.length; i++) {
-            if(chars[i] == '#') {
-                chars[i-1] = ' ';
-                chars[i] = ' ';
+        for (int i = 0; i < chars.length; i++) {
+            if (chars[i] == '#') {
+                chars[i - 1] = ' ';
+                //chars[i] = ' ';
             }
         }
-        String output = "";
-        for(int i=0; i<chars.length; i++){
-            if(chars[i]!=' '){
-                output+=chars[i];
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < chars.length; i++) {
+            if (chars[i] != ' ' && chars[i] != '#') {
+                sb.append(chars[i]);
             }
         }
-        return output;
+        return sb.toString().trim();
+    }
+
+    //Task 3
+    public static String uniqueSymbols(String st1, String st2) {
+        Set<Character> unique = new HashSet<>();
+        for(int i = 0; i<st1.length(); i++) {
+            char ch = st1.charAt(i);
+            unique.add(ch);
+        }
+        StringBuilder sb = new StringBuilder();
+        for(int i=0; i<st2.length(); i++) {
+            char ch = st2.charAt(i);
+            if(unique.contains(ch)) {
+                sb.append(ch);
+                unique.remove(ch);
+            }
+        }
+        return sb.toString().trim();
     }
 }
