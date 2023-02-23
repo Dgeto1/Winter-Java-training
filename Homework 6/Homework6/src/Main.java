@@ -9,8 +9,11 @@ public class Main {
         for (int i = 0; i < nums.length; i++) {
             System.out.print(nums[i] + " ");
         }
+        System.out.println();
 
         //Task 2
+        String st = "a##bc";
+        System.out.println(originalString(st));
     }
 
     //Task 1
@@ -24,10 +27,22 @@ public class Main {
 
     //Task 2
     public static String originalString(String st) {
-        for(int i = 0; i<st.length(); i++) {
-            if(st.charAt(i) == '#') {
-                char result = st.charAt(i-1);
+        char[] chars = new char[st.length()];
+        for(int i=0; i<chars.length; i++){
+            chars[i] = st.charAt(i);
+        }
+        for(int i = 0; i<chars.length; i++) {
+            if(chars[i] == '#') {
+                chars[i-1] = ' ';
+                chars[i] = ' ';
             }
         }
+        String output = "";
+        for(int i=0; i<chars.length; i++){
+            if(chars[i]!=' '){
+                output+=chars[i];
+            }
+        }
+        return output;
     }
 }
