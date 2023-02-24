@@ -3,17 +3,21 @@ public class Main {
         //Task 1
         System.out.println(isAbsent("ППОЗЗП"));
         System.out.println(isAbsent("PPОЗЗЗ"));
+        System.out.println(isAbsent("ОООППП"));
 
         //Task 2
-            System.out.println(compareStrings("  abc  ", "abc"));
-            System.out.println(compareStrings("ABC", "abc"));
-            System.out.println(compareStrings(" ala   bala", "ala bala"));
-            System.out.println(compareStrings(" ала bala  ", "alabala"));
+            System.out.println(compareStrings("  abc  ", "abc")); //true
+            System.out.println(compareStrings("ABC", "abc")); //true
+            System.out.println(compareStrings(" ala   bala", "ala bala")); //true
+            System.out.println(compareStrings(" ала bala  ", "alabala")); //false
         }
 
-    public static boolean isAbsent(String st) {
+    public static boolean isAbsent(String st)   {
         int counter = 0;
         for (int i = 0; i < st.length(); i++) {
+            if(st.charAt(i) != 'О' || st.charAt(i) != 'З' || st.charAt(i) != 'П') {
+                return false;
+            }
             if (counter >= 3) {
                 return false;
             }
