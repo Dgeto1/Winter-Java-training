@@ -16,14 +16,18 @@ public class Main {
         System.out.println(followingString("acaca"));
     }
 
-    public static void addElements(ArrayList<Character> chars, String st) {
+    public static ArrayList<Character> addElements(String st) {
+        ArrayList<Character> chars = new ArrayList<>();
         for (int i = 0; i < st.length(); i++) {
             char ch = st.charAt(i);
             chars.add(ch);
         }
+        Collections.sort(chars);
+        removeDuplicates(chars);
+        return chars;
     }
 
-    public static void compareElements(ArrayList<Character> chList) {
+    public static void removeDuplicates(ArrayList<Character> chList) {
         for (int i = 0; i < chList.size() - 1; i++) {
             if (chList.get(i) == chList.get(i + 1)) {
                 chList.remove(i + 1);
@@ -33,33 +37,20 @@ public class Main {
     }
 
     public static boolean sameLetters(String st1, String st2) {
-        ArrayList<Character> chList1 = new ArrayList<>();
-        ArrayList<Character> chList2 = new ArrayList<>();
+        ArrayList<Character> chList1 = addElements(st1);
+        ArrayList<Character> chList2 = addElements(st2);
 
-        addElements(chList1, st1);
-        addElements(chList2, st2);
-
-        Collections.sort(chList1);
-        Collections.sort(chList2);
-
-        compareElements(chList1);
-        compareElements(chList2);
-
-        if (chList1.size() != chList2.size()) {
-            return false;
-        } else if (chList1 == chList2) {
-            return true;
-        }
-        return true;
+        return chList1.equals(chList2);
     }
 
     public static boolean followingString(String st) {
         for (int i = 1; i <= st.length() / 2; i++) {
             String subst = st.substring(0, i);
-            int j = i;
+            int j = i+1;
             String subst2 = st.substring(j, j + i);
             while (subst.equals(subst2) && i + j <= st.length()) {
                 j += i;
+                subst2 = st.substring(j, j+i);
             }
             if (j == st.length()) {
                 return true;
