@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
         //Task 1
@@ -8,18 +10,16 @@ public class Main {
         System.out.println(v1);
         System.out.println(v2);
 
+        //Task 2
+
         //Task 4
-        char[] symbols = {'a', 'b', 'c'};
+        char[] symbols = {'1', '2', '3'};
+
         System.out.println(reverse(symbols));
     }
 
     //Task 3
-    /*public static int[][] mergeRanges(int[][] ranges) {
-        int[] me
-        for(int i=0; i<ranges.length; i++) {
-            if(ranges[i][1] <= ranges[i+1][0])
-        }
-    }*/
+
 
     //Task 4
     public static char[] reverse(char[] symbols) {
