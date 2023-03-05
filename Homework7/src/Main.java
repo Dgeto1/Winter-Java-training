@@ -17,7 +17,6 @@ public class Main {
         for (int i = 0; i < st.length(); i++) {
             if (st.charAt(i) != 'О' || st.charAt(i) != 'З' || st.charAt(i) != 'П') {
                 return false;
-                //fsurgfhkds
             }
             if (counter >= 3) {
                 return false;
