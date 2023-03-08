@@ -22,4 +22,22 @@ public class Matrix {
     public int get(int x, int y) {
         return matrix[x][y];
     }
+
+    public int[][] subMatrix(Range rows, Range cols) {
+        int r = 0, c = 0;
+        for(Integer num : rows) {
+            r++;
+        }
+        for(Integer num : cols) {
+            c++;
+        }
+
+        int[][] subMatrix = new int[r][c];
+        for(int row = rows.getStart(), i=0; row <=rows.getEnd(); row++, i++) {
+            for(int col = cols.getStart(), j=0; col <= cols.getEnd(); col++, j++) {
+                subMatrix[i][j] = this.matrix[row][col];
+            }
+        }
+        return subMatrix;
+    }
 }

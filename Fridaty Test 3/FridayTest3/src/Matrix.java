@@ -3,20 +3,11 @@ public class Matrix {
 
     public Matrix(int rows, int columns) {
         matrix = new int[rows][columns];
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
-                matrix[i][j] = 0;
-            }
-        }
     }
 
     public Matrix(int rows, int columns, int defaultValue) {
         this(rows, columns);
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
-                matrix[rows][columns] = defaultValue;
-            }
-        }
+        fill(defaultValue);
     }
 
     public void fill(int value) {
@@ -28,18 +19,15 @@ public class Matrix {
     }
 
     public void clear() {
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                matrix[i][j] = 0;
-            }
-        }
+        fill(0);
     }
 
     public int[] getRow(int row) {
-        int[] arr = new int[matrix.length];
-        for (int i = row - 1, k = 0; i < matrix.length; i++) {
-            arr[k] = matrix[row][i];
-            k++;
+        int rowLength = matrix[0].length;
+        int[] arr = new int[rowLength];
+
+        for (int col = 0; col < rowLength; col++) {
+            arr[col] = matrix[row][col];
         }
         return arr;
     }
@@ -53,21 +41,20 @@ public class Matrix {
         return arr;
     }
 
-    private boolean isValidIndex(int x, int y) {
-        return x >= 0 && x < matrix.length && y >= 0 && y < matrix[0].length;
+    private void isValidIndex(int x, int y) {
+        if (!(x >= 0 && x < matrix.length && y >= 0 && y < matrix[0].length)) {
+            throw new IndexOutOfBoundsException();
+        }
     }
 
     public void set(int x, int y, int value) {
-        if (isValidIndex(x, y)) {
-            matrix[x][y] = value;
-        }
+        isValidIndex(x, y);
+        matrix[x][y] = value;
     }
 
     public int get(int x, int y) {
-        if (isValidIndex(x, y)) {
-            return matrix[x][y];
-        }
-        return -1;
+        isValidIndex(x, y);
+        return matrix[x][y];
     }
 
     public String toString() {
