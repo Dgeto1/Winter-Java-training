@@ -1,12 +1,14 @@
 public class StringBuilder {
     private java.lang.StringBuilder sb;
 
-    public StringBuilder(StringBuilder sb){
+    public StringBuilder(StringBuilder sb) {
 
     }
+
     public StringBuilder(java.lang.StringBuilder sb) {
         this.sb = sb;
     }
+
     public void append(String str) {
         this.sb.append(str);
     }
@@ -77,6 +79,6 @@ public class StringBuilder {
     }
 
     public void delete(int start) {
-        this.sb.delete(start, this.sb.length()-1);
+        this.sb.delete(start, this.sb.length() - 1);
     }
 }
