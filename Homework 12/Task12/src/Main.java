@@ -11,8 +11,9 @@ public class Main {
         list.add(4);
         int[] nums = { 7, 8, 9 };
         //splice(list, 1);
-        //splice(list, 1, 1);
+        // splice(list, 1, 1);
         splice(list, 2, 2, nums);
+        //splice(list, 1, 2 , nums);
         for(Integer x : list) {
             System.out.print(x + " ");
         }
@@ -39,7 +40,7 @@ public class Main {
             deleteCount--;
         }
         elements.add(start, item);
-    }
+    }   
 
     public static void splice(List<Integer> elements, int start, int deleteCount, int[] nums) {
         while (deleteCount > 0) {
@@ -48,8 +49,8 @@ public class Main {
         }
         int length = nums.length;
         while (length > 0) {
-            for (int i = 0; i < nums.length; i++) {
-                elements.add(start, nums[i]);
+            for (int num : nums) {
+                elements.add(start, num);
                 start++;
                 length--;
             }
