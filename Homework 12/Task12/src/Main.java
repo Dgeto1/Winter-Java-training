@@ -4,67 +4,55 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Integer[] a = {1, 2, 3,  4};
-        List<Integer> list = Arrays.asList(a);
-        splice(list, 1, 1);
-        // [1, 3, 4]
-        int[] nums = {5,6};
-        splice(list, 1, 2, nums);
-        // [1, 5, 6, 4]
-        splice(list, 1);
-        // [1]
-        int[] items = {7,8,9};
-        splice(list, 2, 2, items);
-        // [1, 2, 7, 8, 9]
-    }
-
-    public static void splice(List<Integer> arr, int start) {
-        for(int i=start; i<arr.size(); i++) {
-            arr.remove(arr.get(i));
+        List<Integer> list = new ArrayList<Integer>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        int[] nums = { 7, 8, 9 };
+        //splice(list, 1);
+        //splice(list, 1, 1);
+        splice(list, 2, 2, nums);
+        for(Integer x : list) {
+            System.out.print(x + " ");
         }
     }
 
-    public static void splice(List<Integer> arr, int start, int deleteCount) {
-        int count = deleteCount;
-        int index = start;
-
-        while(deleteCount>0) {
-            arr.remove(arr.get(start));
-            start++;
-            count--;
+    public static void splice(List<Integer> elements, int start) {
+        for (int i = start; i < elements.size(); i++) {
+            elements.remove(i);
+            i--;
         }
     }
 
-    public static void splice(List<Integer> arr, int start, int deleteCount, int item) {
-        int count = deleteCount;
-        int index = start;
 
-        while (deleteCount>0) {
-            if(deleteCount==1) {
-                arr.remove(arr.get(index));
-                arr.add(start, item);
+    public static void splice(List<Integer> elements, int start, int deleteCount) {
+        while (deleteCount > 0) {
+            elements.remove(start);
+            deleteCount--;
+        }
+    }
+
+    public static void splice(List<Integer> elements, int start, int deleteCount, int item) {
+        while (deleteCount > 0) {
+            elements.remove(start);
+            deleteCount--;
+        }
+        elements.add(start, item);
+    }
+
+    public static void splice(List<Integer> elements, int start, int deleteCount, int[] nums) {
+        while (deleteCount > 0) {
+            elements.remove(start);
+            deleteCount--;
+        }
+        int length = nums.length;
+        while (length > 0) {
+            for (int i = 0; i < nums.length; i++) {
+                elements.add(start, nums[i]);
+                start++;
+                length--;
             }
-            arr.remove(arr.get(index));
-            start++;
-            count--;
-        }
-    }
-
-    public static void splice(List<Integer> arr, int start, int deleteCount, int[] items) {
-        int count = deleteCount;
-        int index = start;
-
-        while (deleteCount>0) {
-            if(deleteCount==1) {
-                arr.remove(arr.get(index));
-                for(int i=start, k=0; i<deleteCount; i++) {
-                    arr.add(i, items[k]);
-                    k++;
-                }
-            }
-            arr.remove(arr.get(index));
-            start++;
-            count--;
         }
     }
 }
