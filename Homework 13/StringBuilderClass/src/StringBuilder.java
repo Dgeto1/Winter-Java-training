@@ -72,15 +72,51 @@ public class StringBuilder {
         buffer = newBuffer;
     }
 
-    /*public int indexOf(String str) {
-        if(str.isEmpty()) {
+    public int indexOf(String str) {
+        return indexOf(str, 0);
+    }
+
+    public int indexOf(String str, int fromIndex) {
+        if (str.isEmpty()) {
             throw new NullPointerException();
         }
         int index = -1;
-        for(int i=0; i<buffer.length; i++) {
-            
+        for (int i = fromIndex; i < buffer.length; i++) {
+            boolean isFounded = true;
+            for (int j = 0; j < str.length(); j++) {
+                if (String.valueOf(buffer).charAt(i + j) != str.charAt(j)) {
+                    isFounded = false;
+                    break;
+                }
+            }
+            if (isFounded) {
+                index = i;
+                break;
+            }
         }
-    }*/
+        return index;
+    }
+
+    public int lastIndexOf(String str, int fromIndex) {
+        if (str.isEmpty()) {
+            throw new NullPointerException();
+        }
+
+        int index = -1;
+        for (int i = fromIndex; i < buffer.length; i++) {
+            boolean isFounded = true;
+            for (int j = 0; j < str.length(); j++) {
+                if (String.valueOf(buffer).charAt(i + j) != str.charAt(j)) {
+                    isFounded = false;
+                    break;
+                }
+            }
+            if (isFounded) {
+                index = i;
+            }
+        }
+        return index;
+    }
 
     public void setCharAt(int index, char ch) {
         buffer[index] = ch;
@@ -172,21 +208,21 @@ public class StringBuilder {
         }
 
         char[] firstElements = new char[start];
-        char[] secondElements = new char[buffer.length-end];
+        char[] secondElements = new char[buffer.length - end];
         for (int i = 0; i < start; i++) {
             firstElements[i] = buffer[i];
         }
-        for(int i=end, k = 0; i<buffer.length; i++) {
+        for (int i = end, k = 0; i < buffer.length; i++) {
             secondElements[k] = buffer[i];
             k++;
         }
 
         int pos = 0;
-        for(char ch : firstElements) {
+        for (char ch : firstElements) {
             buffer[pos] = ch;
             pos++;
         }
-        for(char ch : secondElements) {
+        for (char ch : secondElements) {
             buffer[pos] = ch;
             pos++;
         }
@@ -195,10 +231,10 @@ public class StringBuilder {
     public void delete(int start) {
         char[] pom = new char[start];
 
-        for(int i=0; i<start; i++) {
+        for (int i = 0; i < start; i++) {
             pom[i] = buffer[i];
         }
 
-       buffer = pom;
+        buffer = pom;
     }
 }
