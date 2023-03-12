@@ -12,34 +12,44 @@ public class Main {
         //splice(list, 1);
         //splice(list, 1, 1);
         splice(list, 1, 2, 5, 6);
-        //splice(list, 1, 2 , nums);
         for (Integer x : list) {
             System.out.print(x + " ");
         }
     }
 
-    public static <E> void splice(List<E> elements, int start) {
+    public static <E> List<E> splice(List<E> elements, int start) {
         if (start < 0 || start >= elements.size()) {
             throw new IndexOutOfBoundsException();
         }
-        for (int i = start; i < elements.size(); i++) {
+        List<E> deletedItems = new ArrayList<>();
+        for (int i = elements.size() - 1; i >= 0; i--) {
             elements.remove(i);
-            i--;
+            deletedItems.add(elements.get(i));
+            i++;
         }
+
+        return deletedItems;
     }
 
 
-    public static <E> void splice(List<E> elements, int start, int deleteCount) {
+    public static <E> List<E> splice(List<E> elements, int start, int deleteCount) {
         validIndex(elements, start, deleteCount);
+        List<E> deletedItems = new ArrayList<>();
+        for (int i = start; i < elements.size() - deleteCount; i++) {
+            E lastElement = elements.get(elements.size() - i);
+            elements.set(elements.size() - 1, elements.get(i));
+            elements.set(i, lastElement);
+        }
         while (deleteCount > 0) {
-            elements.remove(start);
+            deletedItems.add(elements.remove(elements.size() - 1));
             deleteCount--;
         }
+        return deletedItems;
     }
 
-    public static <E> void splice(List<E> elements, int start, int deleteCount, E... items) {
+    public static <E> List<E> splice(List<E> elements, int start, int deleteCount, E... items) {
         validIndex(elements, start, deleteCount);
-        splice(elements, start, deleteCount);
+        List<E> deletedItems = splice(elements, start, deleteCount);
         int length = items.length;
         while (length > 0) {
             for (E num : items) {
@@ -48,6 +58,7 @@ public class Main {
                 length--;
             }
         }
+        return deletedItems;
     }
 
     public static <E> void validIndex(List<E> elements, int start, int deleteCount) {
