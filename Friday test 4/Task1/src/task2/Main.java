@@ -2,7 +2,7 @@ package task2;
 
 public class Main {
     public static void main(String[] args) {
-        Average avg = new Average(3);
+        Average avg = new Average(2);
         float val;
 
         val = avg.next(1); // 1

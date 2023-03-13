@@ -12,6 +12,9 @@ public class Average {
     }
 
     public float next(int number) {
+        if(n<=0){
+            return 0;
+        }
         numbers.add(number);
         float average = 0;
         float sum = 0;
