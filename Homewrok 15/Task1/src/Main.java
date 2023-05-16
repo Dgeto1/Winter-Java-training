@@ -22,13 +22,6 @@ public class Main {
     }
 
     public static boolean compare(Employee e1, Employee e2) {
-        if (e1 == null && e2 == null) {
-            return true;
-        }
-        if (e1 == null || e2 == null) {
-            return false;
-        }
-
         if (e1.getNameEmployee() == e2.getNameEmployee() && e1.getManager().getName() == e2.getManager().getName()) {
             return true;
         }
